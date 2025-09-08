@@ -40,8 +40,8 @@ WebDriverWait wait;
 	@And("check in the cart box")
 	public void check_in_the_cart_box() {
 	    driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div/div/div[2]/div[2]/button[1]/i")).click();
-	    driver.findElement(By.cssSelector("button.btn.btn-inverse.btn-block.btn-lg.dropdown-toggle")).click();
-	    driver.findElement(By.xpath("//*[@id=\"cart\"]/ul/li[2]/div/p/a[1]/strong")).click();
+	    driver.findElement(By.linkText("Shopping Cart")).click();
+	   // driver.findElement(By.xpath("//*[@id=\"cart\"]/ul/li[2]/div/p/a[1]/strong")).click();
 	}
 
 	@Then("succesfully added")

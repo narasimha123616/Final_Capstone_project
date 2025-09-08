@@ -47,7 +47,7 @@ public class Register {
 		    
 		    WebElement Email = driver.findElement(By.id("input-email"));
 		    Email.click();
-		    Email.sendKeys("nara12345@gmail.com");
+		    Email.sendKeys("nara1234567@gmail.com");
 		    Thread.sleep(1000);
 		    
 		    WebElement Telephone = driver.findElement(By.id("input-telephone"));

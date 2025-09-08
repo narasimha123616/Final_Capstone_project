@@ -6,7 +6,7 @@
       <class name="Open_Cart.TestRunner">
         <methods>
           <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="0 2"/>
+          <include name="runScenario" invocation-numbers="0 3"/>
           <include name="tearDownClass"/>
         </methods>
       </class> <!-- Open_Cart.TestRunner -->
