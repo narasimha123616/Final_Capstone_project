@@ -70,7 +70,6 @@
             <configuration>
                 <includes>
                     <include>**/*Test*.java</include>
-                    <include>**/*Runner*.java</include>
                 </includes>
                 <testFailureIgnore>false</testFailureIgnore>
                 <useSystemClassLoader>true</useSystemClassLoader>

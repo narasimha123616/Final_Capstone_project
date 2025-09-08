@@ -19,36 +19,33 @@ public class checkout {
     WebDriverWait wait;
 	@Given("OpenCart website will be  open")
 	public void open_cart_website_will_be_open() {
-		driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.get("https://tutorialsninja.com/demo/");
-        driver.manage().window().maximize();
-        System.out.println("Opened OpenCart homepage"); 
+		OpenCartLocators.openOpenCartSite();
+        driver = OpenCartLocators.driver;
 	}
 
 	@And("click on the item")
 	public void click_on_the_item() {
-		driver.findElement(By.name("search")).sendKeys("phone");
-	    driver.findElement(By.cssSelector("button.btn.btn-default.btn-lg")).click(); 
+	    
+	    driver.findElement(OpenCartLocators.searchBox).sendKeys("phone");
+        driver.findElement(OpenCartLocators.searchBtn).click();
 
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
 	    js.executeScript("window.scrollBy(0, 300)");   
 	    
-	    driver.findElement(By.xpath("//*[@id=\"content\"]/div[3]/div/div/div[2]/div[2]/button[1]/i")).click();
-	    driver.findElement(By.xpath("/html/body/header/div/div/div[3]/div/button")).click();
-	    driver.findElement(By.linkText("View Cart")).click();
+	    driver.findElement(OpenCartLocators.clickonpro).click();
+	    driver.findElement(OpenCartLocators.Checkon).click();
+	    driver.findElement(OpenCartLocators.ViewSee);
 	}
 
 	@And("add item into cart")
 	public void add_item_into_cart() throws Exception{
-	    driver.findElement(By.linkText("Checkout")).click();
+	    driver.findElement(OpenCartLocators.checkoutBtn).click();
 	    Thread.sleep(2000);
 	}
 
 	@Then("checkout working")
 	public void checkout_working() {
-		List<WebElement> errorMsgs = driver.findElements(By.xpath("//*[@id=\"checkout-cart\"]/div[1]"));
+		List<WebElement> errorMsgs = driver.findElements(OpenCartLocators.chekoutCart);
 
 		if (!errorMsgs.isEmpty() && errorMsgs.get(0).isDisplayed()) {
 		    String msg = errorMsgs.get(0).getText();

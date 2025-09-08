@@ -1,5 +1,4 @@
 package Open_Cart;
-
 import io.cucumber.java.en.Given;
 
 import java.time.Duration;
@@ -17,27 +16,17 @@ WebDriver driver;
 WebDriverWait wait;
 	@Given("OpenCart open in the browser")
 	public void open_cart_open_in_the_browser() {
-		driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        driver.get("https://tutorialsninja.com/demo/");
-        driver.manage().window().maximize();
-        System.out.println("Opened OpenCart homepage");   
+		OpenCartLocators.openOpenCartSite();
+        driver = OpenCartLocators.driver;  
 	}
-
 	@And("click on the product")
 	public void click_on_the_product() throws Exception{
-		driver.findElement(By.linkText("Desktops")).click();
-	    Thread.sleep(2000);
-	    
+		driver.findElement(OpenCartLocators.Desk).click();
+	    Thread.sleep(2000);	    
 	}
-
 	@Then("Successfully search")
 	public void successfully_search() throws Exception{
-		driver.findElement(By.xpath("//*[@id=\"menu\"]/div[2]/ul/li[1]/div/div/ul/li[2]/a")).click();
+		driver.findElement(OpenCartLocators.clickon).click();
 		System.out.println("Successfullt Searched");
 	}
-
-
-
 }
